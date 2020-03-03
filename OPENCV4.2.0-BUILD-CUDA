@@ -1,0 +1,30 @@
+
+----------------------------------------------------------
+set "openCvSource=D:\OpenCV-4.2.0\opencv"
+set "openCVExtraModules=D:\OpenCV-4.2.0\opencv_contrib\modules"
+set "openCvBuild=%openCvSource%\build"
+set "buildType=Release"
+set "generator=Visual Studio 16 2019"
+----------------------------------------------------------
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"cmake.exe" -B"%openCvBuild%/" -H"%openCvSource%/" -G"%generator%" -A"x64" -DCMAKE_BUILD_TYPE=%buildType% -DOPENCV_EXTRA_MODULES_PATH="%openCVExtraModules%/" ^
+-DINSTALL_TESTS=ON -DINSTALL_C_EXAMPLES=ON -DBUILD_EXAMPLES=ON ^
+-DBUILD_opencv_world=ON ^
+-DWITH_CUDA=ON -DCUDA_TOOLKIT_ROOT_DIR="C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v10.2" -DCUDA_FAST_MATH=ON -DWITH_CUBLAS=ON -DCUDA_ARCH_BIN=5.3,6.0,6.1,7.0,7.5 -DCUDA_ARCH_PTX=7.5 -DWITH_NVCUVID=ON -DWITH_CUDNN=ON^
+-DWITH_OPENGL=ON ^
+-DWITH_MFX=ON ^
+-DOPENCV_ENABLE_NONFREE=ON -DBUILD_opencv_rgbd=OFF
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+"cmake.exe" --build %openCvBuild% --target INSTALL --config Release
+"cmake.exe" --build %openCvBuild% --target INSTALL --config Debug
+-----------------------------------------------------------------------------------
+
+-----------------------------------------------------------------------------------
+Visual Studio 2019 OPENCV Project Settings :
+
+Directory VCC+ Directory inclusione : D:\OpenCV-4.2.0\opencv\build\include
+Directory VCC+ Directory librerie : D:\OpenCV-4.2.0\opencv\build\lib\Debug (Release)
+Linker input : Dipendenze aggiuntive : opencv_world420d.lib (opencv_world420.lib)
+
+----------------------------------------------------------------------------------------
